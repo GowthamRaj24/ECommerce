@@ -1,0 +1,27 @@
+.prop_button{
+    padding: 15px 35px;
+    background-color: var(--ast-global-color-1);
+    text-align: center;
+    color: var(--ast-global-color-5);
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.prop_button:hover{
+    background-color: var(--ast-global-color-0);
+    color: var(--ast-global-color-5);
+    cursor: pointer;
+}
+
+.prop_button img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

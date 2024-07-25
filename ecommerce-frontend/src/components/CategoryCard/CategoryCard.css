@@ -1,0 +1,17 @@
+.outerCategoryCard{
+    border-radius: 15px;
+}
+
+.innerCategoryCard{
+    height: 250px;
+    width: 300px;
+    background-color: var(--ast-global-color-5);
+    padding: 50px 30px 30px 30px;
+}
+.categoryCardTitle{
+    font-size: 26px;
+    font-weight: 500;
+}
+.innerCategoryCard div{
+    padding-bottom: 20px;
+}
