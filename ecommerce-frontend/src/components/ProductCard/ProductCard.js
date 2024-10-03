@@ -1,77 +1,74 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductCard.css";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInr, faRupee, faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
-import image from "../../images/product1.jpg";
 
+const ProductCard = ({ product, onClickProductCard, id }) => {
+  const [productDetails, setProductDetails] = useState(null);
+  const [discountedPrice, setDiscountedPrice] = useState(0);
+  const [userId , setUserId] = useState(null);
 
-const ProductCard = ({ product }) => {
-    const [ProductDetails, setProductDetails] = useState(undefined);
-    const [DiscountedPrice, setDiscountedPrice] = useState(0);
-    const [User , setUser] = useState()
+  useEffect(() => {
+    if (product) {
+      setProductDetails(product);
+    }
+  }, [product]);
 
-    useEffect(() => {
-        setProductDetails(product);
-    }, [product]);
+  useEffect(() => {
+    if (productDetails && productDetails.productDiscount > 0) {
+      setDiscountedPrice(
+        productDetails.productPrice -
+          (productDetails.productPrice * productDetails.productDiscount) / 100
+      );
+    }
+  }, [productDetails]);
 
-    useEffect(() => {
-        if (ProductDetails) {
-            const temp =
-                ProductDetails.productPrice -
-                (ProductDetails.productPrice * ProductDetails.productDiscount) / 100;
-            setDiscountedPrice(temp);
-            console.log("temp", temp);
-        }
-    }, [ProductDetails]);
-    useEffect(() => {
-        if (ProductDetails) {
-            console.log(ProductDetails.uploadedBy);
-            axios.post("http://localhost:4001/users/fetchingUser", { userID: ProductDetails.uploadedBy })
-                .then((res, req) => {
-                    setUser(res.data);
-                    console.log("fetched from product",res.data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        }
-    }, [ProductDetails]);
-
+  if (!productDetails) {
     return (
-        <>
-            {ProductDetails !== undefined ? (
-                <div className="outerProductCard">
-                    <div className="productImageContainer">
-                        <img src={image} alt="product" />
-                        <p className="productCategory">{ProductDetails.productCategory}</p>
-                    </div>
-                    <div  className="productCardContent">
-                        <p className="productCardTitle">{ProductDetails.productName}</p>
-                        <div className="productCardPrice">
-                            <p className="strike"><s><FontAwesomeIcon icon={faInr} style={{transform:"scale(0.8)" , marginTop:"2px"}}/>{ProductDetails.productPrice}</s></p>
-                            <p style={{color:"green" , transform:"scale(1.3)"}}><FontAwesomeIcon icon={faInr} style={{transform:"scale(0.8)" , marginTop:"2px" }}/>{DiscountedPrice}</p>
-                            <p className="ProductCardDiscount">-{ProductDetails.productDiscount}%</p>
-                        </div>
-                    
-                    </div>
-                </div>
-            ) : (
-                <>
-                    <div className="outerProductCard">
-                        <div className="card is-loading">
-                            <div className="loading-image"></div>
-                            <div className="loading-content">
-                                <h2></h2>
-                                <p></p>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                </>
-            )}
-        </>
+      <div className="product-card skeleton">
+        <div className="skeleton-img"></div>
+        <div className="skeleton-content">
+          <div className="skeleton-line"></div>
+          <div className="skeleton-line"></div>
+          <div className="skeleton-line"></div>
+        </div>
+      </div>
     );
+  }
+
+  return (
+    <div className="product-card">
+      <div className="product-image">
+        <img
+          src={productDetails.productImage}
+          alt={productDetails.productName}
+        />
+        {productDetails.productDiscount > 0 && (
+          <span className="discount-badge">
+            -{productDetails.productDiscount}%
+          </span>
+        )}
+      </div>
+      <div className="product-content">
+        <h3 className="product-name">{productDetails.productName}</h3>
+        <p className="product-category">{productDetails.productCategory}</p>
+        <p className="product-description">{productDetails.productDescription}</p>
+        <div className="product-price">
+          {productDetails.productDiscount > 0 ? (
+            <>
+              <span className="original-price">
+                ${productDetails.productPrice}
+              </span>
+              <span className="discounted-price">${discountedPrice}</span>
+            </>
+          ) : (
+            <span className="regular-price">${productDetails.productPrice}</span>
+          )}
+        </div>
+        <button className="add-to-cart" onClick={() => onClickProductCard(id , userId)}>
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default ProductCard;

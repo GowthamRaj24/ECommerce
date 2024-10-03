@@ -1,25 +1,31 @@
-import Button from "../Button/Button";
+import React from 'react';
 import "./CategoryCard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
+import rightarrow from "../../images/rightarrow.png";
 
 const CategoryCard = ({ category }) => {
     return (
-        <>
         <div className="outerCategoryCard">
             <div className="innerCategoryCard">
-                <div className="categoryCardTitle">
-                    {category.categoryName}
+                <div 
+                    className="categoryImage" 
+                    style={{backgroundImage: `url(${category.categoryImage})`}}
+                ></div>
+                <div className="categoryContent">
+                    <div>
+                        <h3 className="categoryCardTitle">
+                            {category.categoryName}
+                        </h3>
+                        <p className="categoryCardDescription">
+                            {category.categoryDescription}
+                        </p>
+                    </div>
+                    <button className="shopNowButton">
+                        SHOP NOW
+                        <img src={rightarrow} alt="Right arrow" />
+                    </button>
                 </div>
-                <div className="categoryCardDescription">
-                    {category.categoryDescription}
-                </div>
-                <Button icon={faArrowRight}>Shop Now</Button>
-                
             </div>
         </div>
-        </>
     )
 }
 

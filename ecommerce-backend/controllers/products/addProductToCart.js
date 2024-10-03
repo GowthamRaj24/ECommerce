@@ -2,15 +2,20 @@ const usersSchema = require("../../models/users/usersSchema");
 
 const addProductToCart = async (req, res) => {
     try {
+        const { productId, userId } = req.body;
+
         const product = {
-            productId: req.body.productId,
+            productId,
             quantity: 1
         };
 
-        const user = await usersSchema.findOne({ userId: req.body.userId });
-        console.log(user.cartItems);
+        const user = await usersSchema.findOne({ userId });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
         const findProductIndex = user.cartItems.findIndex(
-            (item) => item.productId === req.body.productId
+            (item) => item.productId === productId
         );
 
         if (findProductIndex !== -1) {
@@ -18,18 +23,13 @@ const addProductToCart = async (req, res) => {
         } else {
             user.cartItems.push(product);
         }
-        console.log(user.cartItems);
 
-        await usersSchema.findOneAndUpdate(
-            { userId: req.body.userId },
-            { cartItems: user.cartItems }
-        );
+        await user.save(); // Save the user instead of using `findOneAndUpdate`
 
         res.status(200).json({
             data: user.cartItems,
             message: "Product added successfully"
         });
-
     } catch (err) {
         res.status(500).json({
             message: err.message

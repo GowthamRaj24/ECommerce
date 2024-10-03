@@ -13,7 +13,7 @@ const Header = (props) => {
     const cartItem = async (req , res) => {
         axios.post(`http://localhost:4001/users/fetchUserByToken?token=${token}`)
         .then((res) => {
-            const user = res.data;
+            const user = res;
             console.log("user Data Header",user);
             setCartItems(user.cartItems);
         })

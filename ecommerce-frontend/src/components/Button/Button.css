@@ -14,6 +14,10 @@
     align-items: center;
 }
 
+.button_outer{
+    position : relative;
+}
+
 .prop_button:hover{
     background-color: var(--ast-global-color-0);
     color: var(--ast-global-color-5);
@@ -21,7 +25,9 @@
 }
 
 .prop_button img{
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   left: 3%;
+   top: auto;
 }

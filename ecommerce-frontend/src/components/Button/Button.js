@@ -2,8 +2,13 @@ import "./Button.css";
 
 const Button = ({icon , children}) => {
    return (
-    <>
-        <button className="prop_button"><img src={icon}/>{children}</button>
+   <>
+   <div className="button_outer">
+      <button className="prop_button">
+         {icon ? <img src={icon}/> : null}
+         {children}
+      </button>
+      </div>
    </>
    )
 };

@@ -25,7 +25,6 @@ const loginUser = async (req, res) => {
     }
     catch (error) {
         res.status(404).json({"error in logging in": error?.message});
-
     }
 };
 

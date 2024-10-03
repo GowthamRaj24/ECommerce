@@ -34,7 +34,7 @@ const HeaderCartBox = (props) => {
     return (
         <>
         <div className="dim" style={{display:props.HeaderCart ? "block" :"none"}} onClick={()=> {props.openCart(false)}}></div>
-        <div className="cartbox" style={{right:props.HeaderCart ? "0" :"-100vw" }}>
+        <div className="cartbox" style={{right:props.HeaderCart ? "0" :"-100vw" }}> 
             <div className="header_cart_box" >
                 <div className="shopping_cart">
                     <h4>Shopping Cart</h4>

@@ -19,7 +19,7 @@
     background-repeat: no-repeat;
     background-size: 28% auto;
 }
-
+    
 .hero_content{
     color: var(--ast-global-color-6);
     font-weight: bold;
@@ -76,6 +76,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .bestSellingProductsHead{
     align-items: center;
     display: flex;
@@ -83,7 +84,7 @@
     font-size: 2rem;
     font-weight: 500;
     color: var(--ast-global-color-6);
-    margin-bottom: 20px;
+    margin-bottom: 80px;
   }
   
 
@@ -92,23 +93,25 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center ;
     align-items: center;
     padding: 50px 0px;
 }
 
 .bestProductsTitle{
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: var(--ast-global-color-6);
 }
-.bestSellingProductsContainer{
-    height: 60vh;
-    width: 90%;
+.bestSellingProductsContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
 .categories{
     height: 80vh;
@@ -119,18 +122,57 @@
     justify-content: center;
     align-items: center;
 }
+
 .categories img{
     position: absolute;
     top: -7%;
     left: 45%;
-    
 }
-.categoryContainer{
-    height: 70%;
-    width: 90%;
-    background-color: aquamarine;
+
+.categoryContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.discount{
+    height: 8vh;
+    color: #fff;
+    background-color: var(--ast-global-color-8);
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    padding: 30px;
+}
+.discount h3{
+    font-size: 32px;
+    font-weight: 700;
+}
+.tryfree{
+    height: 6vh;
+    text-align: center;
+    font-size: 24px;
+    background-color: var(--ast-global-color-4);
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewproducts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ast-global-color-4);
+}
+
+footer{
+    background-color: var(--ast-global-color-8);
 }

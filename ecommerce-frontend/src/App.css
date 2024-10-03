@@ -10,9 +10,9 @@
   --ast-global-color-8: #000000;
 }
 .body{
-  width: 100vw;
-  overflow-x: hidden;
+  overflow-x :hidden;
   padding: 0;
   margin: 0;
   transition: all 0.5s ease-in-out;
+  overflow: hidden;
 }

@@ -1,136 +1,128 @@
-.outerProductCard{
-  height: 450px;
-  width: 310px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease-in-out;
 }
-.productImageContainer{
-  height: 70%;
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
   position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image img {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.productCategory{
-  position: absolute;
-  top: 85%;
-  opacity: 0.7;
-  left: 43%;
-}
-.outerProductCard img{
   height: 100%;
-  width: 100%;
+  object-fit: cover;
 }
 
-.productCategory{
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--ast-global-color-6);
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
 }
-.productCardContent{
+
+.product-content {
+  padding: 20px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.product-category {
+  font-size: 14px;
+  color: #777;
+  margin: 0 0 10px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-price {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 25%;
+  margin-bottom: 15px;
 }
 
-.productCardTitle{
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--ast-global-color-6);
-}
-.productCardPrice{
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--ast-global-color-6);
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+.original-price {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 10px;
 }
 
-.strike{
-  color: grey;
-  transform: scale(.9);
+.discounted-price,
+.regular-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2ecc71;
 }
 
-.ProductCardDiscount{
-  background-color: var(--ast-global-color-1);
-  padding: 5px;
-  border-radius: 90%;
-  transform: scale(.8);
-  color: var(--ast-global-color-5);
+.add-to-cart {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-
-
-
-
-s, strike{text-decoration:none;position:relative;}
-s::before, strike::before {
-    top: 50%; /*tweak this to adjust the vertical position if it's off a bit due to your font family */
-    background:red; /*this is the color of the line*/
-    opacity:.7;
-    content: '';
-    width: 110%;
-    position: absolute;
-    height:.1em;
-    border-radius:.1em;
-    left: -5%;
-    white-space:nowrap;
-    display: block;
-    transform: rotate(-15deg);  
+.add-to-cart:hover {
+  background-color: #2980b9;
 }
-s.straight::before, strike.straight::before{transform: rotate(0deg);left:-1%;width:102%;}
 
-/* Card Loading CSS */
- 
-.card.is-loading .loading-image,
-.card.is-loading  h2,
-.card.is-loading  p {
-      background: #eee;
-      background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-      border-radius: 5px;
-      background-size: 200% 100%;
-      width: 100%;
-      animation: 1.5s shine linear infinite;
-    }
-  
+/* Skeleton loading styles */
+.skeleton {
+  background-color: #f0f0f0;
+  animation: pulse 1.5s infinite;
+}
 
-    .card.is-loading     .loading-image {
-      height: 200px;
-      width: 100%;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  
-  
-.card.is-loading   h2 {
-    width: 100%;
-    height: 30px;
-    }
-  
- 
-.card.is-loading    p {
-    width: 100%;
-    height: 50px;
-    }
+.skeleton-img {
+  height: 200px;
+}
 
-  
-  @keyframes shine {
-    to {
-      background-position-x: -200%;
-    }
+.skeleton-content {
+  padding: 20px;
+}
+
+.skeleton-line {
+  height: 20px;
+  margin-bottom: 10px;
+  background-color: #e0e0e0;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
   }
-
-.outerProductCard:hover .innerProductCard{
-  transform: scale(1.02);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
